@@ -21,3 +21,6 @@ Route::get('/', function () {
 // how to create new route
 
 Route::resource('games', 'GameController');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
