@@ -20,6 +20,4 @@ Route::get('/', function () {
 
 // how to create new route
 
-Route::get('posts', function () {
-    return view('posts');
-});
+Route::resource('games', 'GameController');

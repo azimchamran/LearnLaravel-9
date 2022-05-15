@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //Now it can find the controller.
+        Route::middleware('web')
+            ->namespace('App\Http\Controllers')
+            ->group(base_path('routes/web.php'));
     }
 }
