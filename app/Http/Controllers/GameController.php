@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\GameController;
+
+use Illuminate\Http\Request;
+use App\Models\Game;
 
 use Illuminate\Http\Request;
 
@@ -14,7 +16,9 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+        $games = Game::all();
+        
+        return view('index',compact('games'));
     }
 
     /**
@@ -35,7 +39,13 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'price' => 'required',
+        ]);
+        $show = Game::create($validatedData);
+   
+        return redirect('/games')->with('success', 'Game is successfully saved');
     }
 
     /**
@@ -57,7 +67,9 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        //
+         $game = Game::findOrFail($id);
+
+        return view('edit', compact('game'));
     }
 
     /**
@@ -69,7 +81,13 @@ class GameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'price' => 'required'
+        ]);
+        Game::whereId($id)->update($validatedData);
+
+        return redirect('/games')->with('success', 'Game Data is successfully updated');
     }
 
     /**
@@ -80,6 +98,9 @@ class GameController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $game = Game::findOrFail($id);
+        $game->delete();
+
+        return redirect('/games')->with('success', 'Game Data is successfully deleted');
     }
 }
