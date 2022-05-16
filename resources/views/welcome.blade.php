@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>learn laravel</title>
     <link rel="stylesheet" type="text/css" href="/app.css">
-    <script type="text/javascript" src="/app.js"></script>
+    <!-- <script type="text/javascript" src="/app.js"></script> -->
 </head>
 <body>
 <h1>learn the Laravel</h1>
-
+<p>{{$title}}</p>
 </body>
 </html>
