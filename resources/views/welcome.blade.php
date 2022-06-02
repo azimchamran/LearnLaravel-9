@@ -9,6 +9,6 @@
 </head>
 <body>
 <h1>learn the Laravel</h1>
-<p>{{$title}}</p>
+<h1>Welcome page</h1>
 </body>
 </html>
